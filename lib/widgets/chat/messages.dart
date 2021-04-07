@@ -1,18 +1,24 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 
 import './message_bubble.dart';
 
 class Messages extends StatelessWidget {
+  Future<User> checkAuth() async {
+    User user = FirebaseAuth.instance.currentUser;
+    return user;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<QuerySnapshot>(
-        future: FirebaseAuth.instance.currentUser,
-        builder: (ctx, futureSnapshot) {
-          if (futureSnapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          }
+    return FutureBuilder<User>(
+      future: checkAuth(),
+      builder: (ctx, futureSnapshot) {
+        if (futureSnapshot.connectionState == ConnectionState.waiting) {
+          return Center(child: CircularProgressIndicator());
+        }
+        if (futureSnapshot.hasData) {
           return StreamBuilder(
             builder: (ctx, chatSnapshot) {
               if (chatSnapshot.connectionState == ConnectionState.waiting) {
@@ -40,6 +46,16 @@ class Messages extends StatelessWidget {
                 )
                 .snapshots(),
           );
-        });
+        } else {
+          return Container(
+            child: Center(
+              child: Text(
+                'User not found',
+              ),
+            ),
+          );
+        }
+      },
+    );
   }
 }
