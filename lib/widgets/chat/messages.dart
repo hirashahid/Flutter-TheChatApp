@@ -5,10 +5,15 @@ import 'package:firebase_auth/firebase_auth.dart';
 import './message_bubble.dart';
 
 class Messages extends StatelessWidget {
+  Future<User> checkCurrentUser() async {
+    User currentUser = FirebaseAuth.instance.currentUser;
+    return currentUser;
+  }
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<QuerySnapshot>(
-        future: FirebaseAuth.instance.currentUser,
+    return FutureBuilder<User>(
+        future: checkCurrentUser(),
         builder: (ctx, futureSnapshot) {
           if (futureSnapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
