@@ -13,7 +13,6 @@ class Messages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<User>(
-<<<<<<< HEAD
       future: checkCurrentUser(),
       builder: (ctx, futureSnapshot) {
         if (futureSnapshot.connectionState == ConnectionState.waiting) {
@@ -24,30 +23,6 @@ class Messages extends StatelessWidget {
             if (chatSnapshot.connectionState == ConnectionState.waiting) {
               return Center(
                 child: CircularProgressIndicator(),
-=======
-        future: checkCurrentUser(),
-        builder: (ctx, futureSnapshot) {
-          if (futureSnapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          }
-          return StreamBuilder(
-            builder: (ctx, chatSnapshot) {
-              if (chatSnapshot.connectionState == ConnectionState.waiting) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              final chatDocs = chatSnapshot.data.docs;
-
-              return ListView.builder(
-                reverse: true,
-                itemCount: chatDocs.length,
-                itemBuilder: (ctx, index) => MessageBubble(
-                  chatDocs[index]['text'],
-                  chatDocs[index]['userId'] == futureSnapshot.data.uid,
-                  key: ValueKey(chatDocs[index].documentID),
-                ),
->>>>>>> hassam
               );
             }
             final chatDocs = chatSnapshot.data.docs;
