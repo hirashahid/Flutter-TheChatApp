@@ -1,4 +1,4 @@
-<h1 align="center">Flutter-TheShopApp</h1>
+<h1 align="center">Flutter-TheChatApp</h1>
 <a href="#">
   <div align="center" >
     <img src="ss.png" width='400' height = '500'/>
