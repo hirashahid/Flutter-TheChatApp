@@ -8,14 +8,18 @@
 ## <h2 align = "center"> [Tap to see the video of this app](https://hirashahid.thecloudsoft.com/flutter-thechatapp/)</h2>
 
 ## What I have learnt:
-- [x] FirebaseStorage
-- [x] Real time streaming of data
-- [x] Cloud Storage in Firebase
-- [x] Authentication
-- [x] Firebase Security Rules
-- [x] Uploading Images in Firebase
-- [x] Firebase Cloud Messaging 
-- [x] Firebase Cloud Functions
+- [x] A user need to sign up for using this app 
+- [x] Once he is signed in, he can see all the products which are available and added by every user.
+- [x] A user can add the product, edits and delete the product. 
+- [x] User can also order the product and can see all the products available (added by all users). 
+- [x] At the end, A user can also log out.
+
+## What This App does:
+- [x] State Management(Providers)
+- [x] Storing data on server(firebase)
+- [x] User authentication(tokens)
+- [x] Animations 
+- [x] Working with users input and forms 
 
 ## How To Run
 ```
